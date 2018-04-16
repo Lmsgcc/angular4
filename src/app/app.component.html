@@ -1,0 +1,26 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row" *ngIf="isLoggedIn">
+    <div class="col-md-4">
+      <leftbar></leftbar>
+    </div>
+    <div class="col-md-8" style="background-color: red;">
+        <button type="button" 
+        class="btn btn-primary"
+        (click)="doLogout()">
+        Logout</button>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!isLoggedIn">
+    <div class="col-md-12" style="text-align: center">
+
+      <button type="button" 
+        class="btn btn-primary"
+        (click)="doLogin()">
+        Login</button>
+
+    </div>  
+  </div>
+</div>
+<footer></footer>
