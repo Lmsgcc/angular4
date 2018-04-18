@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, OnDestroy, AfterViewInit, SimpleChanges } from '@angular/core';
 import { AuthService } from './shared/auth.service';
+import { MenuService } from './shared/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   public isLoggedIn : boolean = false;
 
 
-  constructor(private auth:AuthService){
+  constructor(private auth:AuthService, private nav : MenuService){
       this.auth.userState.subscribe( x => this.isLoggedIn = x);
 
   }

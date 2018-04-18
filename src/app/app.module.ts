@@ -16,6 +16,9 @@ import { LeftbarComponent } from './shared/leftbar/leftbar.component';
 
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
+import { PagesComponent } from './pages/pages.component';
+import { MediaComponent } from './media/media.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { MenuService } from './shared/menu.service';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LeftbarComponent
+    LeftbarComponent,
+    PagesComponent,
+    MediaComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
