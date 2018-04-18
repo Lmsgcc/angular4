@@ -10,9 +10,9 @@
         (click)="doLogout()">
         Logout</button>
         <div class="col-md-12">
-            <app-pages *ngIf="showPages"></app-pages>
-            <app-media *ngIf="showMedia"></app-media>
-            <app-settings *ngIf="showSettings"></app-settings>
+            <app-pages *ngIf="activePage == 'showPages'"></app-pages>
+            <app-media *ngIf="activePage == 'showMedia'"></app-media>
+            <app-settings *ngIf="activePage == 'showSettings'"></app-settings>
         </div>
     </div>
   </div>

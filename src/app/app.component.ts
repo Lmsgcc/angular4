@@ -10,9 +10,11 @@ import { MenuService } from './shared/menu.service';
 
 export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   
-  public showPages : Boolean = true;
-  public showMedia : Boolean = true;
-  public showSettings : Boolean = true;
+//  public showPages : Boolean = true;
+//  public showMedia : Boolean = true;
+//  public showSettings : Boolean = true;
+
+  public activePage: string;
 
   public ngOnDestroy(): void {
     
@@ -27,11 +29,10 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
   public isLoggedIn : boolean = false;
 
-
   constructor(private auth:AuthService, private nav : MenuService){
       this.auth.userState.subscribe( x => this.isLoggedIn = x);
       this.nav.page.subscribe(x => {
-        this.showPages = false;
+/*        this.showPages = false;
         this.showMedia = false;
         this.showSettings = false;
         switch(x)
@@ -40,7 +41,10 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
           case "/media": this.showMedia = true;break;
           case "/settings" : this.showSettings = true;break;
           default: case "/pages": this.showPages = true;break;
-        }
+        }*/
+
+        
+        this.activePage = x;
       });
 
   }
