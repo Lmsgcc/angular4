@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-media',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediaComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private auth: AuthService) {  }
+  
+  ngOnInit(): void { 
+    this.auth.userState
+      .subscribe(x => this.auth.isLoggedIn = x);
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private auth: AuthService) {  }
+    
+    ngOnInit(): void { 
+      this.auth.userState
+        .subscribe(x => this.auth.isLoggedIn = x);
+    }
 
 }

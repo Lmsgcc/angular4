@@ -4,11 +4,16 @@
     <div class="col-md-4">
       <leftbar></leftbar>
     </div>
-    <div class="col-md-8" style="background-color: red;">
+    <div class="col-md-8">
         <button type="button" 
         class="btn btn-primary"
         (click)="doLogout()">
         Logout</button>
+        <div class="col-md-12">
+            <app-pages *ngIf="showPages"></app-pages>
+            <app-media *ngIf="showMedia"></app-media>
+            <app-settings *ngIf="showSettings"></app-settings>
+        </div>
     </div>
   </div>
 
@@ -21,6 +26,7 @@
         Login</button>
 
     </div>  
+
   </div>
 </div>
 <footer></footer>
