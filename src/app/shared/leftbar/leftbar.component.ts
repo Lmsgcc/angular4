@@ -12,12 +12,16 @@ export class LeftbarComponent implements OnInit {
 
   constructor(private menu : MenuService) 
   {
-
-  
   }
 
   ngOnInit() {
     this.menuArray = this.menu.getMenu();
   }
+
+  public showComponent(link:string)
+  {
+    this.menu.setPage(link);
+  }
+
 
 }

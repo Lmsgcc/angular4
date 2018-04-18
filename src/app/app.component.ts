@@ -10,15 +10,15 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   
   public ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
+    
   }
   
   public ngAfterViewInit(): void {
-    throw new Error("Method not implemented.");
+    
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    throw new Error("Method not implemented.");
+    
   }
   public isLoggedIn : boolean = false;
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
       this.auth.userState.subscribe( x => this.isLoggedIn = x);
 
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
   }
   public doLogin()
