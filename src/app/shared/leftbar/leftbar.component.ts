@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from "../menu.service";
 
 @Component({
   selector: 'leftbar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftbarComponent implements OnInit {
 
-  constructor() { }
+  public menuArray = new Array();
+
+  constructor(private menu : MenuService) 
+  {
+
+  
+  }
 
   ngOnInit() {
+    this.menuArray = this.menu.getMenu();
   }
 
 }

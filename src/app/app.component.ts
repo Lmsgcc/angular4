@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, AfterViewInit, SimpleChanges } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 
 @Component({
@@ -6,8 +6,22 @@ import { AuthService } from './shared/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+
+export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+  
+  public ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
+  }
+  
+  public ngAfterViewInit(): void {
+    throw new Error("Method not implemented.");
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    throw new Error("Method not implemented.");
+  }
   public isLoggedIn : boolean = false;
+
 
   constructor(private auth:AuthService){
       this.auth.userState.subscribe( x => this.isLoggedIn = x);
@@ -25,7 +39,7 @@ export class AppComponent implements OnInit {
   public doLogout()
   {
     this.auth.logout().then(
-      (value) => this.auth.setLoginStatus(false),
+      (value) => {console.log(value); this.auth.setLoginStatus(false);},
       (reason) => this.auth.setLoginStatus(false)
     );
   }

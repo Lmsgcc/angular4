@@ -15,6 +15,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LeftbarComponent } from './shared/leftbar/leftbar.component';
 
 import { AuthService } from './shared/auth.service';
+import { MenuService } from './shared/menu.service';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AuthService } from './shared/auth.service';
     AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [
-    AuthService
+    AuthService,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })
