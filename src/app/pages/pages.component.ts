@@ -9,22 +9,6 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class PagesComponent implements OnInit {
 
-  public  msgArray : Array<string>;
-
-  public page : {
-    title:string,
-    subject: string,
-    slug: string,
-    body: string,
-    published_data: Date
-  } = {
-    title:"",
-    subject: "",
-    slug: "",
-    body: "",
-    published_data: new Date()
-  };
-
   private pageList : Array<any>;
   constructor(private auth: AuthService,
   private af : AngularFirestore
@@ -38,10 +22,5 @@ export class PagesComponent implements OnInit {
       this.af.collection("/pages").valueChanges().subscribe(x => this.pageList = x);
   }
 
-  public criaPagina()
-  {
-    this.af.collection("/pages").add(this.page).catch( x => {
-      this.msgArray.push(x);
-    });
-  }
+  
 }
