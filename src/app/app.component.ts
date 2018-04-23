@@ -38,7 +38,7 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   public ngOnInit(): void {
-    this.data.getHackerNews().subscribe(x => this.dataObj = x);
+    this.dataObj =  this.data.getHackerNews();// .subscribe(x => this.dataObj = x);
     this.auth.userState.subscribe( x => this.isLoggedIn = x);
     this.nav.page.subscribe(x => {
       this.activePage = x;
