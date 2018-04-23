@@ -19,6 +19,8 @@ import { MenuService } from './shared/menu.service';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DataService } from './shared/data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { SettingsComponent } from './settings/settings.component';
     SettingsComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
@@ -41,7 +44,8 @@ import { SettingsComponent } from './settings/settings.component';
   ],
   providers: [
     AuthService,
-    MenuService
+    MenuService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

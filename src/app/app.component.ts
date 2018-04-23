@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, OnDestroy, AfterViewInit, SimpleChanges } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
+import { DataService } from './shared/data.service';
 
 @Component({
   selector: 'app-root',
@@ -28,29 +29,21 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
     
   }
   public isLoggedIn : boolean = false;
-
-  constructor(private auth:AuthService, private nav : MenuService){
-      this.auth.userState.subscribe( x => this.isLoggedIn = x);
-      this.nav.page.subscribe(x => {
-/*        this.showPages = false;
-        this.showMedia = false;
-        this.showSettings = false;
-        switch(x)
-        {
-          case "/pages": this.showPages = true;break;
-          case "/media": this.showMedia = true;break;
-          case "/settings" : this.showSettings = true;break;
-          default: case "/pages": this.showPages = true;break;
-        }*/
-
-        
-        this.activePage = x;
-      });
+  public dataObj : any;
+  constructor(
+      private auth:AuthService, 
+      private nav : MenuService,
+      private data:DataService){
 
   }
+
   public ngOnInit(): void {
-
-  }
+    this.data.getHackerNews().subscribe(x => this.dataObj = x);
+    this.auth.userState.subscribe( x => this.isLoggedIn = x);
+    this.nav.page.subscribe(x => {
+      this.activePage = x;
+    });
+}
   public doLogin()
   {
     this.auth.login().then((value) => this.auth.setLoginStatus(true), 

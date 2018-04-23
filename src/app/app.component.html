@@ -13,6 +13,10 @@
 </div>
 
 <div class="container">
+
+      {{(dataObj | async)?.by}}
+      {{(dataObj | async)?.url}}
+
   <div class="row" *ngIf="isLoggedIn">
     <div class="col-md-4">
       <leftbar></leftbar>
