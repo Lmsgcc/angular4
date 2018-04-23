@@ -21,6 +21,8 @@ import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DataService } from './shared/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NewPageComponent } from './new-page/new-page.component';
 
 
 @NgModule({
@@ -31,11 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
     LeftbarComponent,
     PagesComponent,
     MediaComponent,
-    SettingsComponent
+    SettingsComponent,
+    NewPageComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

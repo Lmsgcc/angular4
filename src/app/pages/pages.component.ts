@@ -9,6 +9,22 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class PagesComponent implements OnInit {
 
+  public  msgArray : Array<string>;
+
+  public page : {
+    title:string,
+    subject: string,
+    slug: string,
+    body: string,
+    published_data: Date
+  } = {
+    title:"",
+    subject: "",
+    slug: "",
+    body: "",
+    published_data: new Date()
+  };
+
   private pageList : Array<any>;
   constructor(private auth: AuthService,
   private af : AngularFirestore
@@ -24,13 +40,8 @@ export class PagesComponent implements OnInit {
 
   public criaPagina()
   {
-    var novos_dados = {
-      "slug": "insert_automatico",
-      "body": "um body",
-      "title":"custom title",
-      "subject":"Aqui está um subject",
-      "published_data": ""
-    };
-    this.af.collection("/pages").add(novos_dados);
+    this.af.collection("/pages").add(this.page).catch( x => {
+      this.msgArray.push(x);
+    });
   }
 }
