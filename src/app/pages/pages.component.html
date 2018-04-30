@@ -1,23 +1,23 @@
 
 <button type="button" 
   class="btn btn-primary"
-  (click)="showNew=!showNew;">New Page</button>
+  (click)="showNew=!showNew;"
+  >New Page</button>
 
-<new-page *ngIf="showNew"></new-page>
+<new-page *ngIf="showNew" (InsertPageDone)="hideEvent($event)"></new-page>
 
 <div class="clearfix clearfix2">
   &nbsp;
-
 </div>
 
 
-<table class="table col-md-12 row">
+<table class="table col-md-12 row table-condensed table-responsive" *ngIf="!showNew" >
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">title</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Published Date</th>
+      <th>#</th>
+      <th>title</th>
+      <th>Subject</th>
+      <th>Published Date</th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +25,7 @@
       <td >{{ page.slug }}</td>
       <td>{{ page.title }}</td>
       <td>{{ page.subject }}</td>
-      <td>{{ page.published_data | date:"dd/MM/yyyy"}}</td>
+      <td>{{ page.published_data | date:"dd/MM/yyyy" }}</td>
     </tr>
   </tbody>
 </table>

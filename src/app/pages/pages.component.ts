@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+
+
+
+
 
 @Component({
   selector: 'app-pages',
@@ -8,7 +12,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
-
+  public showNew : boolean = false;
   private pageList : Array<any>;
   constructor(private auth: AuthService,
   private af : AngularFirestore
@@ -22,5 +26,12 @@ export class PagesComponent implements OnInit {
       this.af.collection("/pages").valueChanges().subscribe(x => this.pageList = x);
   }
 
-  
+  public hideEvent(event: {type: string, text: string})
+  {
+    console.log(event);
+    if(event.type == "success")
+    {
+        this.showNew = false;
+    }
+  }
 }
