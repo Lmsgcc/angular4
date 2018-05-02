@@ -21,9 +21,9 @@
     </div>
     <div class="col-md-8">
         <div class="col-md-12">
-            <app-pages *ngIf="activePage == 'showPages'"></app-pages>
-            <app-media *ngIf="activePage == 'showMedia'"></app-media>
-            <app-settings *ngIf="activePage == 'showSettings'"></app-settings>
+
+            <router-outlet></router-outlet>
+           
         </div>
     </div>
   </div>
@@ -33,3 +33,7 @@
   </div>
 </div>
 <footer></footer>
+
+
+
+

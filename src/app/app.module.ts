@@ -17,12 +17,15 @@ import { LeftbarComponent } from './shared/leftbar/leftbar.component';
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
 import { PagesComponent } from './pages/pages.component';
+import { PageComponent } from './pages/new/page.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DataService } from './shared/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NewPageComponent } from './new-page/new-page.component';
+import { AppRouteModule } from './app-route/app-route.module';
+
 
 
 @NgModule({
@@ -37,6 +40,7 @@ import { NewPageComponent } from './new-page/new-page.component';
     NewPageComponent
   ],
   imports: [
+    AppRouteModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,

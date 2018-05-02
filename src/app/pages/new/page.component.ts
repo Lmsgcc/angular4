@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -7,10 +7,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'new-page',
-  templateUrl: './new-page.component.html',
-  styleUrls: ['./new-page.component.css']
+  templateUrl: './page.component.html',
+  styleUrls: ['./page.component.css']
 })
-export class NewPageComponent implements OnInit {
+export class PageComponent implements OnInit {
 
   public form: FormGroup;
   @Output() InsertPageDone :  EventEmitter<{type:string, text: string}> = new EventEmitter();

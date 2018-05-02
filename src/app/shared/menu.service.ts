@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class MenuService {
-  private activePage = new BehaviorSubject<string>("showPages");
+  private activePage = new BehaviorSubject<string>("/pages");
   public page = this.activePage.asObservable();
   public setPage(pageLink :string)
   {
@@ -13,9 +13,9 @@ export class MenuService {
   constructor() { }
  
   private menu: Array<{text:string, link:string}> = [
-    {text:"Pages", link:"showPages"},
-    {text:"Media", link:"showMedia"},
-    {text:"Settings", link:"showSettings"}
+    {text:"Pages", link:"/pages"},
+    {text:"Media", link:"/media"},
+    {text:"Settings", link:"/settings"}
   ];
 
   public getMenu()

@@ -1,5 +1,10 @@
-<ul class="nav flex-column">
-    <button  class="btn btn-link nav-link" *ngFor="let menu of menuArray"
-    (click)="showComponent(menu.link)"
-    >{{menu.text}}</button>
-</ul>
+    <ul class="nav flex-column">
+        <li  class="btn btn-link nav-link" 
+        *ngFor="let menu of menuArray"
+        
+        >
+        <a [routerLink]="[menu.link]">{{ menu.text }}</a>
+    </li>
+    </ul>
+
+    
