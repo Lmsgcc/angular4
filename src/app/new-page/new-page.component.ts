@@ -44,6 +44,7 @@ export class NewPageComponent implements OnInit {
 
     this.af.collection("/pages").add(this.page).catch( x => {
       this.msgArray.push(x);
+      this.InsertPageDone.emit({type: "failure", text:"Error ocurred"});
     }).then(x => {
       this.msgArray.push("The page was created");
       this.InsertPageDone.emit({type: "success", text:"Page Done!!"});

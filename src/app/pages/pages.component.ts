@@ -28,7 +28,6 @@ export class PagesComponent implements OnInit {
 
   public hideEvent(event: {type: string, text: string})
   {
-    console.log(event);
     if(event.type == "success")
     {
         this.showNew = false;
