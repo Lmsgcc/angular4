@@ -1,9 +1,29 @@
 
 <form style="margin-top:20px">
     <div class="form-group col-lg-12 row">
-      <label class="control-label col-lg-2" for="exampleInputEmail1">Label</label>
-      <input type="text" class="form-control col-lg-6" id="valueLabel1" placeholder=""
+      <label class="control-label col-lg-2" for="exampleInputEmail1">Label 1</label>
+      <input type="text" class="form-control col-lg-6" 
+      [(ngModel)]="settings.value1" 
+      id="valueLabel1" placeholder=""
       name="name_label_1">
+    </div>
+    <div class="form-group col-lg-12 row">
+        <label class="control-label col-lg-2" for="exampleInputEmail1">Label 2</label>
+        <input type="text" class="form-control col-lg-6" id="valueLabel2" placeholder=""
+        [(ngModel)]="settings.value2" 
+        name="name_label_2">
+    </div>
+    <div class="form-group col-lg-12 row">
+        <label class="control-label col-lg-2" for="exampleInputEmail3">Label 3</label>
+        <input type="text" class="form-control col-lg-6" id="valueLabel3" placeholder=""
+        [(ngModel)]="settings.value3" 
+        name="name_label_3">
+    </div>
+    <div class="form-group col-lg-12 row">
+        <label class="control-label col-lg-2" for="exampleInputEmail1">Label 3</label>
+        <input type="text" class="form-control col-lg-6" id="valueLabel4" placeholder=""
+        [(ngModel)]="settings.value4" 
+        name="name_label_4">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
