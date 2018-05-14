@@ -7,13 +7,9 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit{
-  
-  
   constructor(private auth: AuthService) {  }
-  
   ngOnInit(): void { 
     this.auth.userState
       .subscribe(x => this.auth.isLoggedIn = x);
   }
-
 }

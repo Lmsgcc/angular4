@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'new-page',
@@ -23,7 +23,8 @@ export class PageComponent implements OnInit{
 
   constructor(private auth: AuthService,
     private af: AngularFirestore,
-    private activatedRoute: ActivatedRoute) {  
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {  
 
       activatedRoute.params
         .subscribe(x => {
@@ -47,17 +48,18 @@ export class PageComponent implements OnInit{
       this.af.doc("/pages/" + this.id)
       .update(this.page)
       .then(x => {
-        this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
+//        this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
+        this.router.navigate(['/pages']);
       })
     } else {
       this.af.collection("/pages")
       .add(this.page)
       .then(x => {
-        this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
-        
+//        this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
+        this.router.navigate(['/pages']);
       })
     }
-    
+        
   }
 
 }

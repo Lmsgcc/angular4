@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyBZC1VgrQgEeXopuex8CJq5tTL7T_oyKus",
-    authDomain: "formacms.firebaseapp.com",
-    databaseURL: "https://formacms.firebaseio.com",
-    projectId: "formacms",
-    storageBucket: "formacms.appspot.com",
-    messagingSenderId: "829465994610"
-  }
+    apiKey: "AIzaSyAe-Viy11g56nsidtb-NfS4z-wzwmziWXg",
+    authDomain: "angulartest-9e174.firebaseapp.com",
+    databaseURL: "https://angulartest-9e174.firebaseio.com",
+    projectId: "angulartest-9e174",
+    storageBucket: "angulartest-9e174.appspot.com",
+    messagingSenderId: "284449357413"
+    }
 };
