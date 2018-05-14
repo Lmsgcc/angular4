@@ -1,26 +1,21 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
-@Injectable()
 export class MenuService {
-  private activePage = new BehaviorSubject<string>("/pages");
-  public page = this.activePage.asObservable();
-  public setPage(pageLink :string)
-  {
-    this.activePage.next(pageLink);
-  }
 
-  constructor() { }
- 
-  private menu: Array<{text:string, link:string}> = [
-    {text:"Pages", link:"/pages"},
-    {text:"Media", link:"/media"},
-    {text:"Settings", link:"/settings"}
-  ];
+    private activePage = new BehaviorSubject<string>("/pages");
+    public page = this.activePage.asObservable();
+    public setPage(pageLink: string) {
+        this.activePage.next(pageLink)
+    }
 
-  public getMenu()
-  {
-    return this.menu;
-  }
+    private menu: Array<{ text: string, link: string }> = [
+        { text: "Pages", link: "/pages" },
+        { text: "Media", link: "/media" },
+        { text: "Settings", link: "/settings" }
+    ];
+
+    public getMenu(): Array<{ text: string, link: string }> {
+        return this.menu;
+    }
 
 }

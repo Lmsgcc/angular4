@@ -1,66 +1,57 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
-
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
 
 import { environment } from '../environments/environment';
-import { NavbarComponent } from './shared/navbar/navbar/navbar.component';
+
+import { AppComponent } from './app.component';
+import { TopBarComponent } from './shared/topbar/topbar.component';
+import { LeftBarComponent } from './shared/leftbar/leftbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { LeftbarComponent } from './shared/leftbar/leftbar.component';
+import { PagesComponent } from './pages/pages.component';
+import { MediaComponent } from './media/media.component';
+import { SettingsComponent } from './settings/settings.component';
+import { PageComponent } from './pages/new/page.component';
+import { NotFoundComponent } from './shared/notfound/notfound.component';
 
 import { AuthService } from './shared/auth.service';
 import { MenuService } from './shared/menu.service';
-import { PagesComponent } from './pages/pages.component';
-import { PageComponent } from './pages/new/page.component';
-import { MediaComponent } from './media/media.component';
-import { SettingsComponent } from './settings/settings.component';
-import { DataService } from './shared/data.service';
+
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { NewPageComponent } from './new-page/new-page.component';
-import { AppRouteModule } from './app-route/app-route.module';
+import { DataService } from './shared/data.service';
+import { AuthGuard } from './shared/auth.guard';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    TopBarComponent,
+    LeftBarComponent,
     FooterComponent,
-    LeftbarComponent,
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    NewPageComponent
+    PageComponent,
+    NotFoundComponent
   ],
   imports: [
-    AppRouteModule,
-    HttpClientModule,
     BrowserModule,
     FormsModule,
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [
-    AuthService,
-    MenuService,
-    DataService
-  ],
+  providers: [ AuthService, MenuService, DataService, AuthGuard ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor()
-  {
-      
-  }
-
-}
+export class AppModule { }

@@ -1,39 +1,13 @@
-<navbar></navbar>
-<div class="col-lg-12" *ngIf="isLoggedIn">        
-  <button type="button" 
-  class="btn btn-primary"
-  (click)="doLogout()">
-  Logout</button>
-</div>
-<div class="col-lg-12" *ngIf="!isLoggedIn">
-    <button type="button" 
-    class="btn btn-primary"
-    (click)="doLogin()">
-    Login</button>
-</div>
 
+<top-bar></top-bar>
 <div class="container">
-
-
-  <div class="row" *ngIf="isLoggedIn">
+  <div class="row" *ngIf="auth.isLoggedIn">
     <div class="col-md-4">
-      <leftbar></leftbar>
+      <left-bar></left-bar>
     </div>
     <div class="col-md-8">
-        <div class="col-md-12">
-
-            <router-outlet></router-outlet>
-           
-        </div>
+        <router-outlet></router-outlet>
     </div>
-  </div>
-  <div class="row" *ngIf="!isLoggedIn">
-    <div class="col-md-12" style="text-align: center">
-    </div>  
-  </div>
+  </div>  
 </div>
-<footer></footer>
-
-
-
-
+<footer-app></footer-app>

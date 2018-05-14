@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-  selector: 'app-media',
+  selector: 'media-page',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
-export class MediaComponent implements OnInit {
-
+export class MediaComponent implements OnInit{
+  
   constructor(private auth: AuthService) {  }
   
   ngOnInit(): void { 

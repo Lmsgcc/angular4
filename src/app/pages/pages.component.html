@@ -1,33 +1,27 @@
 
 <button type="button" 
   class="btn btn-primary"
-  (click)="goToNew()"
-  >New Page</button>
-<!--
-<new-page *ngIf="showNew" (InsertPageDone)="hideEvent($event)"></new-page>
--->
-<div class="clearfix clearfix2">
-  &nbsp;
-</div>
+  (click)="goToNew()">New Page</button>
 
 
-<table class="table col-md-12 row table-condensed table-responsive" >
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>#</th>
-      <th>title</th>
-      <th>Subject</th>
-      <th>Published Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let page of pageList">
-      <td>{{ page.id }}</td>
-      <td >{{ page.doc.slug }}</td>
-      <td>{{ page.doc.title }}</td>
-      <td>{{ page.doc.subject }}</td>
-      <td>{{ page.doc.published_data | date:"dd/MM/yyyy" }}</td>
-    </tr>
-  </tbody>
-</table>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Published Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let page of pageList">
+        <td><a [routerLink]="['/pages', page.id]">{{ page.id }}</a></td>
+        <td>{{ page.doc.slug }}</td>
+        <td>{{ page.doc.title }}</td>
+        <td>{{ page.doc.subject }}</td>
+        <td>{{ page.doc.publishedDate | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>

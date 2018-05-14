@@ -1,53 +1,47 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Router } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
-
-
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pages',
+  selector: 'pages-page',
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.css']
 })
-export class PagesComponent implements OnInit {
-  public showNew : boolean = false;
-  private pageList : Array<any>;
-  constructor(private auth: AuthService,
-  private af : AngularFirestore,
-  private router : Router
-  ) {  
+export class PagesComponent implements OnInit{
+  public showNew: boolean = false;
+  public pageList: Array<any> = [];
 
-  }
-    
+  constructor(private auth: AuthService,
+    public af: AngularFirestore,
+    private router: Router) {  }
+  
   ngOnInit(): void { 
     this.auth.userState
       .subscribe(x => this.auth.isLoggedIn = x);
-      this.af.collection("/pages").snapshotChanges().subscribe(x => {
+
+    this.af.collection("/Pages")
+      .snapshotChanges()
+      .subscribe(x => {
         let documentArray: Array<any> = [];
         x.forEach(element => {
-          this.af.doc<any>('/pages/' + element.payload.doc.id)
-          .valueChanges()
-          .subscribe(x => documentArray.push({id: element.payload.doc.id, doc: x }));
-        })
+          this.af.doc<any>('/Pages/' + element.payload.doc.id)
+            .valueChanges()
+            .subscribe(x => documentArray.push({id: element.payload.doc.id, doc: x }));
+        });
+
         this.pageList = documentArray;
       });
-      //.valueChanges().subscribe(x => this.pageList = x);
 
   }
 
-  public hideEvent(event: {type: string, text: string})
-  {
-    if(event.type == "success")
-    {
-        this.showNew = false;
-    }
+  public hidePage(args: { type: string, text: string }) {
+    if (args.type == "success") this.showNew = false;
   }
 
-  public goToNew()
-  {
-    this.router.navigate(["/pages","new"]);
+  public goToNew() {
+    this.router.navigate(['/pages', 'new']);
   }
+
 }
