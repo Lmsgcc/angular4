@@ -28,7 +28,7 @@ export class PageComponent implements OnInit{
       activatedRoute.params
         .subscribe(x => {
           this.id = x["id"];
-          this.af.doc("/Pages/" + this.id)
+          this.af.doc("/pages/" + this.id)
             .valueChanges()
             .subscribe(fbDoc => {
               if (fbDoc) this.page = <any>fbDoc;
@@ -44,13 +44,13 @@ export class PageComponent implements OnInit{
   saveObject() {
 
     if (this.id != "new") {
-      this.af.doc("/Pages/" + this.id)
+      this.af.doc("/pages/" + this.id)
       .update(this.page)
       .then(x => {
         this.InsertPageDone.emit({ type: "success", text: "The page was created!" });
       })
     } else {
-      this.af.collection("/Pages")
+      this.af.collection("/pages")
       .add(this.page)
       .then(x => {
         this.InsertPageDone.emit({ type: "success", text: "The page was created!" });

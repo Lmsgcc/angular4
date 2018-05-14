@@ -21,12 +21,12 @@ export class PagesComponent implements OnInit{
     this.auth.userState
       .subscribe(x => this.auth.isLoggedIn = x);
 
-    this.af.collection("/Pages")
+    this.af.collection("/pages")
       .snapshotChanges()
       .subscribe(x => {
         let documentArray: Array<any> = [];
         x.forEach(element => {
-          this.af.doc<any>('/Pages/' + element.payload.doc.id)
+          this.af.doc<any>('/pages/' + element.payload.doc.id)
             .valueChanges()
             .subscribe(x => documentArray.push({id: element.payload.doc.id, doc: x }));
         });
